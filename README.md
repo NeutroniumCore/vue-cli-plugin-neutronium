@@ -4,7 +4,6 @@ WIP
 
 ## Scripts
 
-### When using vue.doc
 
 ## Configuration
 
