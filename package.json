@@ -1,0 +1,35 @@
+{
+  "name": "vue-cli-plugin-neutronium",
+  "version": "0.0.1",
+  "description": "vue-cli 3 plugin to create neutronium application",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeutroniumCore/vue-cli-plugin-neutronium.git"
+  },
+  "keywords": [
+    "vue",
+    "vue-cli",
+    "plugin",
+    "neutronium"
+  ],
+  "author": "David Desmaisons",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NeutroniumCore/vue-cli-plugin-neutronium/issues"
+  },
+  "homepage": "https://github.com/NeutroniumCore/vue-cli-plugin-neutronium/blob/master/README.md",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@types/node": "^10.5.2",
+    "@vue/cli-shared-utils": "^3.0.0-rc.5",
+    "git-user-name": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.0",
+    "@types/jest": "^23.1.4",
+    "@types/mocha": "^5.2.4"
+  }
+}
