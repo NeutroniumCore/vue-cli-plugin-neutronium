@@ -8,6 +8,7 @@ function replaceInLicense(licenseTextTemplate, sourceText, newText) {
 module.exports = (api, option) => {
   // const useLint = api.hasPlugin('eslint')
   // const packageName = api.generator.pkg.name
+// const hasTest = api.hasPlugin('unit-mocha') || api.hasPlugin('unit-jest')
 
   api.extendPackage({
     scripts: {
@@ -26,6 +27,5 @@ module.exports = (api, option) => {
 
   api.postProcessFiles(files => {
     replaceBy(files, 'assets/logo.png', 'assets/neutronium-vue-logo.png')
-    // const hasTest = api.hasPlugin('unit-mocha') || api.hasPlugin('unit-jest')
   })
 }
