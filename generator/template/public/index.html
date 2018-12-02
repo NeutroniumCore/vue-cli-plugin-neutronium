@@ -1,6 +1,17 @@
 ---
 extend: '@vue/cli-service/generator/template/public/index.html'
-replace: !!js/regexp <div id="app"></div>
+replace:
+  - !!js/regexp /<html lang="en">/
+  - !!js/regexp /<div id="app"><\/div>/
 ---
 
-<div id="main"></div>
+<%# REPLACE %>
+<html lang="en" style="height: 100%;overflow: hidden;">
+<%# END_REPLACE %>
+
+<%# REPLACE %>
+<div id="main" style="height: 100%;overflow: hidden;"></div>
+<%# END_REPLACE %>
+
+
+
