@@ -8,9 +8,7 @@ const vm = createVM(rawVm);
 
 install(Vue)
 const vueRootInstanceOption = Object.assign({}, vueInstanceOption() || {}, {
-  components: {
-    App
-  },
+  render: h => h(App),
   data: vm
 });
 new Vue(vueRootInstanceOption).$mount('#main');

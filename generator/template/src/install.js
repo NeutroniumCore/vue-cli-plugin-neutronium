@@ -1,3 +1,4 @@
+/*eslint no-unused-vars: ["error", { "args": "none" }]*/
 function install(Vue) {
   //Call vue use here if needed
 }
