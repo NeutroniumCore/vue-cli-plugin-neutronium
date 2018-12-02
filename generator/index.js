@@ -6,10 +6,6 @@ function replaceInLicense(licenseTextTemplate, sourceText, newText) {
 }
 
 module.exports = (api, option) => {
-  // const useLint = api.hasPlugin('eslint')
-  // const packageName = api.generator.pkg.name
-// const hasTest = api.hasPlugin('unit-mocha') || api.hasPlugin('unit-jest')
-
   api.extendPackage({
     scripts: {
       serve: "vue-cli-service serve --open",
@@ -26,6 +22,6 @@ module.exports = (api, option) => {
   api.render('./template')
 
   api.postProcessFiles(files => {
-    replaceBy(files, 'assets/logo.png', 'assets/neutronium-vue-logo.png')
+    replaceBy(files, 'src/assets/logo.png', 'src/assets/neutronium-vue-logo.png')
   })
 }

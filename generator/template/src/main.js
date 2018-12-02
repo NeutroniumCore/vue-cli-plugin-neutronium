@@ -13,4 +13,4 @@ const vueRootInstanceOption = Object.assign({}, vueInstanceOption() || {}, {
   },
   data: vm
 });
-new Vue(vueRootInstanceOption).$mount('#main')
+new Vue(vueRootInstanceOption).$mount('#main');

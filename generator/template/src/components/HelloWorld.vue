@@ -2,6 +2,7 @@
 extend: '@vue/cli-service/generator/template/src/components/HelloWorld.vue'
 replace: !!js/regexp <template>[^]*?<\/template>/
 ---
+
 <template>
   <div class="app">
     <img src="./assets/logo.png">
