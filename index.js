@@ -1,7 +1,9 @@
 module.exports = (api, projectOptions) => {
-  api.chainWebpack(webpackConfig => {
+  api.chainWebpack(config => {
 
-    const cJsonRule = webpackConfig.module.rule('cjson').test(/\.cjson$/);
+    config.resolve.extensions.merge(['.cjson'])
+
+    const cJsonRule = config.module.rule('cjson').test(/\.cjson$/);
     cJsonRule.use('raw-loader').loader('raw-loader');
   });
 }
