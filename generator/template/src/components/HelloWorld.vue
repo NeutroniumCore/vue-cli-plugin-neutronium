@@ -4,7 +4,7 @@ replace: !!js/regexp <template>[^]*?<\/template>/
 ---
 
 <template>
-  <div class="app">
+  <div>
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
     <h2>Related Links</h2>

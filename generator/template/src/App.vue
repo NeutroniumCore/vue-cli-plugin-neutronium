@@ -1,14 +1,9 @@
 ---
 extend: '@vue/cli-service/generator/template/src/App.vue'
 replace:
-  - !!js/regexp /<div id="app">/
   - !!js/regexp /import HelloWorld from './components/HelloWorld.vue'/
   - !!js/regexp /export default {/
 ---
-
-<%# REPLACE %>
-<div id="main">
-<%# END_REPLACE %>
 
 <%# REPLACE %>
 import HelloWorld from './components/HelloWorld.vue'
