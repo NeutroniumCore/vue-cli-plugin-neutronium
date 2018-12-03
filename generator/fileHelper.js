@@ -8,7 +8,6 @@ function replaceBy(files, toBeReplaced, replacement) {
   delete files[replacement];
 }
 
-
 module.exports = {
   rename,
 

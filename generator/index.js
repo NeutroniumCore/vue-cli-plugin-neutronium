@@ -10,7 +10,7 @@ module.exports = (api, option) => {
     scripts: {
       serve: "vue-cli-service serve ./src/main.js --open --port 9000",
       live: "vue-cli-service serve ./example/main.js --port 8080 --mode production",
-      build: `vue-cli-service build --name build --entry ./src/entry.js`,
+      build: `vue-cli-service build --target lib --name build --entry ./src/entry.js --no-clean`,
     },
     dependencies: {
       "neutronium-vue-command-mixin": "^1.4.1",
