@@ -8,7 +8,9 @@ function replaceInLicense(licenseTextTemplate, sourceText, newText) {
 module.exports = (api, option) => {
   api.extendPackage({
     scripts: {
-      serve: "vue-cli-service serve --open",
+      serve: "vue-cli-service serve ./src/main.js --open --port 9000",
+      live: "vue-cli-service serve ./example/main.js --port 8080",
+      build: `vue-cli-service build --name build --entry ./src/entry.js`,
     },
     dependencies: {
       "neutronium-vue-command-mixin": "^1.4.1",

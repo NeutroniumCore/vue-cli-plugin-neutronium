@@ -37,7 +37,7 @@ export default {
 <%# REPLACE %>
 
 #app .logo {
-  width: 250px;
+  width: 200px;
 }
 </style>
 <%# END_REPLACE %>
