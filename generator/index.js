@@ -14,7 +14,8 @@ module.exports = (api, option) => {
     },
     dependencies: {
       "neutronium-vue-command-mixin": "^1.4.1",
-      "neutronium-vue-simple-command-mixin": "^1.1.0"
+      "neutronium-vue-simple-command-mixin": "^1.1.0",
+      "neutronium-vue-resultcommand-topromise": "^1.1.0"
     },
     devDependencies: {
       "neutronium-vm-loader": "^1.3.0"
