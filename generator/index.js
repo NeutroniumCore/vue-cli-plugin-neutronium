@@ -9,7 +9,7 @@ module.exports = (api, option) => {
   api.extendPackage({
     scripts: {
       serve: "vue-cli-service serve ./src/main.js --open --port 9000",
-      live: "vue-cli-service serve ./src/entry.js --port 8080 --mode production",
+      live: "vue-cli-service serve ./src/entry.js --port 8080 --mode integrated",
       build: "vue-cli-service build --entry ./src/entry.js",
     },
     dependencies: {

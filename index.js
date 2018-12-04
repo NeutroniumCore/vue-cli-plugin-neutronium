@@ -27,7 +27,7 @@ module.exports = (api, projectOptions) => {
 
     config.resolve.extensions.merge(['.cjson'])
 
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' || !process.env.VUE_INJECTED) {
       return;
     }
 
