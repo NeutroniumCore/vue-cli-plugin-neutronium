@@ -7,7 +7,7 @@ import { createVM } from 'neutronium-vm-loader'
 <% if (!options.useRouter) { %>
 const vm = createVM(rawVm);
 <% } %>
-<% else{ %>
+<% if (options.useRouter)  %>
 const vm = updateVM(rawVm);
 <% } %>
 
