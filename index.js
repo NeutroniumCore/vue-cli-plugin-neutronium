@@ -8,14 +8,14 @@ module.exports = (api, projectOptions) => {
       .loader('url-loader')
       .tap(() => undefined);
 
-      config.module
+    config.module
       .rule('media')
       .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/)
       .use('url-loader')
       .loader('url-loader')
       .tap(() => undefined);
 
-      config.module
+    config.module
       .rule('fonts')
       .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/i)
       .use('url-loader')
@@ -27,7 +27,7 @@ module.exports = (api, projectOptions) => {
 
     config.resolve.extensions.merge(['.cjson'])
 
-    if (process.env.NODE_ENV !== 'production' || !process.env.VUE_INJECTED) {
+    if (!process.env.VUE_APP_INJECTED) {
       return;
     }
 
