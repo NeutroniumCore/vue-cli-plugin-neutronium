@@ -8,14 +8,14 @@ module.exports = (api, projectOptions) => {
       .loader('url-loader')
       .tap(() => undefined);
 
-    webpackConfig.module
+      config.module
       .rule('media')
       .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/)
       .use('url-loader')
       .loader('url-loader')
       .tap(() => undefined);
 
-    webpackConfig.module
+      config.module
       .rule('fonts')
       .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/i)
       .use('url-loader')
