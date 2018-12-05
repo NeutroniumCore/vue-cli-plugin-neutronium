@@ -4,17 +4,12 @@ import rawVm from '../data/vm'
 import { install, vueInstanceOption } from './install'
 import { createVM } from 'neutronium-vm-loader'
 
-<% if (!options.useRouter) { %>
-const vm = createVM(rawVm);
-<% } %>
-<% if (options.useRouter) {%>
-const vm = updateVM(rawVm);
-<% } %>
+<% if (!options.useRouter) { %>const vm = createVM(rawVm);<% } %>
+<% if (options.useRouter) {%>const vm = updateVM(rawVm);<% } %>
 
 install(Vue)
 
-<% if (options.useRouter) { %>
-function updateVM(raw) {
+<% if (options.useRouter) { %>function updateVM(raw) {
   const vm = createVM(raw);
   vm.ViewModel.Router = { BeforeResolveCommand: null };
   return vm;
@@ -42,8 +37,7 @@ router.beforeEach((to, _, next) => {
       router.app.ViewModel.CurrentViewModel = null;
       next();
     });
-});
-<% } %>
+});<% } %>
 
 const vueRootInstanceOption = Object.assign({}, vueInstanceOption() || {}, {
   render: h => h(App, {
