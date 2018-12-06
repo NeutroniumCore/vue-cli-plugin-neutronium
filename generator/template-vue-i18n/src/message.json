@@ -1,8 +1,8 @@
 ﻿{
- "en-US":{
-        "Resource":{
-            "Cancel":"Cancel",
-            "Ok":"Ok",
+    "en-US": {
+        "Resource": {
+            "Cancel": "Cancel",
+            "Ok": "Ok"
         }
     }
 }
