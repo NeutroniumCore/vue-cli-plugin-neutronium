@@ -16,7 +16,7 @@ module.exports = [
     type: 'input',
     name: 'projectName',
     when: answer => answer.useInternationalization,
-    message: 'C# namespace containing resources:',
+    message: 'C# : project name',
     group: "Internationalization"
   },
   {
