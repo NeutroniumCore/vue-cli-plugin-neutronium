@@ -19,15 +19,7 @@ module.exports = [
         name: 'resourceFileName',
         when: answer => answer.useInternationalization,
         message: 'Resource file name (.resx C# file)?',
-        group: "Internationalization"
-    },
-    {
-        type: 'checkbox',
-        name: 'locales',
-        default: 'en-US',
-        when: answer => answer.useInternationalization,
-        message: 'Project locales?',
-        choices: locales.map(l =>  ({ name: l, value: l})),
+        default: 'Resource',
         group: "Internationalization"
     },
     {
@@ -67,6 +59,15 @@ module.exports = [
         default: answer => answer.projectName,
         when: answer => answer.useInternationalization & answer.libraryNameDifferent,
         message: 'Library name (filename without .exe)?',
+        group: "Internationalization"
+    },
+    {
+        type: 'checkbox',
+        name: 'locales',
+        default: ['en-US'],
+        when: answer => answer.useInternationalization,
+        message: 'Project locales?',
+        choices: locales.map(name => ({ name, value: l })),
         group: "Internationalization"
     },
 ]
