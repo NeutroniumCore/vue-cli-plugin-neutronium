@@ -5,7 +5,10 @@ function replaceInLicense(licenseTextTemplate, sourceText, newText) {
     .replace(new RegExp(`\\[${sourceText}\\]`), newText)
 }
 
-module.exports = (api, { useRouter, useInternationalization }) => {
+module.exports = (api, option) => {
+  const { useRouter, useInternationalization } = option;
+  option.nameSpace = option.nameSpace || option.projectName;
+  option.exeName = option.exeName || option.nameSpace;
   api.extendPackage({
     scripts: {
       serve: "vue-cli-service serve ./src/main.js --open --port 9000",
@@ -33,7 +36,7 @@ module.exports = (api, { useRouter, useInternationalization }) => {
     });
   }
 
-  if (useInternationalization){
+  if (useInternationalization) {
     api.render('./template-vue-i18n');
     api.extendPackage({
       dependencies: {
