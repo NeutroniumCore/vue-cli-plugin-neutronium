@@ -12,7 +12,7 @@
 <#@ output extension=".json" #>
 <# 
 	Langages = new [] { 
-<% for(var i=0; i<options.locales.length; i++) {%>    "<%= options.locales[i] %>"<% if (i< options.locales-1) { %>,<% } %><% } %>
+<% for(var i=0; i<options.locales.length; i++) {%>    "<%= options.locales[i] %>"<% if (i< options.locales.length-1) { %>,<% } %><% } %>
 	};
 	Resources = new []{"<%= options.resourceFileName %>"};
 #>
