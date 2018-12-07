@@ -41,6 +41,7 @@ module.exports = [
         type: 'confirm',
         name: 'namespaceDifferent',
         message: 'Resource namespace different from project name?',
+        when: answer => answer.useInternationalization,
         default: false,
         group: "Internationalization"
     },
@@ -57,6 +58,7 @@ module.exports = [
         name: 'libraryNameDifferent',
         message: 'Library name different from project name?',
         default: false,
+        when: answer => answer.useInternationalization,
         group: "Internationalization"
     },
     {
