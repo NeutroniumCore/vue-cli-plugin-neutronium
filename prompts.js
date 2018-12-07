@@ -1,3 +1,5 @@
+const locales = require('i18n-locales');
+
 module.exports = [
     {
         type: 'confirm',
@@ -10,6 +12,22 @@ module.exports = [
         name: 'useInternationalization',
         message: 'Use internationalization with vue-i18n integrated with Neutronium?',
         default: false,
+        group: "Internationalization"
+    },
+    {
+        type: 'input',
+        name: 'resourceFileName',
+        when: answer => answer.useInternationalization,
+        message: 'Resource file name (.resx C# file)?',
+        group: "Internationalization"
+    },
+    {
+        type: 'checkbox',
+        name: 'locales',
+        default: 'en-US',
+        when: answer => answer.useInternationalization,
+        message: 'Project locales?',
+        choices: locales,
         group: "Internationalization"
     },
     {
@@ -46,7 +64,7 @@ module.exports = [
         name: 'exeName',
         default: answer => answer.projectName,
         when: answer => answer.useInternationalization & answer.libraryNameDifferent,
-        message: 'Library name (filename without .exe):',
+        message: 'Library name (filename without .exe)?',
         group: "Internationalization"
     },
 ]
