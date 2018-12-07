@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-neutronium",
-  "version": "0.1.11",
+  "version": "0.1.14",
   "description": "vue-cli 3 plugin to create neutronium application",
   "main": "index.js",
   "repository": {

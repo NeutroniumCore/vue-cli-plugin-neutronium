@@ -31,13 +31,13 @@ module.exports = [
         name: 'nameSpace',
         default: answer => answer.projectName,
         when: answer => answer.useInternationalization && answer.namespaceDifferent,
-        message: 'C# namespace containing resources:',
+        message: 'Resource namespace:',
         group: "Internationalization"
     },
     {
         type: 'confirm',
         name: 'libraryNameDifferent',
-        message: 'Library name namespace different from project name?',
+        message: 'Library name different from project name?',
         default: false,
         group: "Internationalization"
     },
@@ -46,7 +46,7 @@ module.exports = [
         name: 'exeName',
         default: answer => answer.projectName,
         when: answer => answer.useInternationalization & answer.libraryNameDifferent,
-        message: 'C# library name (filename without .exe):',
+        message: 'Library name (filename without .exe):',
         group: "Internationalization"
     },
 ]

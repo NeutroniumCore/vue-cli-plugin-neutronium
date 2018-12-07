@@ -8,7 +8,7 @@ function replaceInLicense(licenseTextTemplate, sourceText, newText) {
 module.exports = (api, option) => {
   const { useRouter, useInternationalization } = option;
   option.nameSpace = option.nameSpace || option.projectName;
-  option.exeName = option.exeName || option.nameSpace;
+  option.exeName = option.exeName || option.projectName;
   api.extendPackage({
     scripts: {
       serve: "vue-cli-service serve ./src/main.js --open --port 9000",
