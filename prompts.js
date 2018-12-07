@@ -27,7 +27,7 @@ module.exports = [
         default: 'en-US',
         when: answer => answer.useInternationalization,
         message: 'Project locales?',
-        choices: locales,
+        choices: locales.map(l =>  ({ name: l, value: l})),
         group: "Internationalization"
     },
     {
