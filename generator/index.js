@@ -1,4 +1,5 @@
 const { renameFiles, replaceBy, updateFile } = require('./fileHelper')
+const versions = require('../utils/versions');
 
 function replaceInLicense(licenseTextTemplate, sourceText, newText) {
   return licenseTextTemplate.replace(new RegExp(`<${sourceText}>`), newText)
@@ -6,14 +7,15 @@ function replaceInLicense(licenseTextTemplate, sourceText, newText) {
 }
 
 module.exports = (api, option) => {
-  const { useRouter, useInternationalization, useModern } = option;
+  const { useRouter, useInternationalization, neutroniumVersion } = option;
   option.nameSpace = option.nameSpace || option.projectName;
   option.exeName = option.exeName || option.projectName;
+  const { useModern } = versions.find(v => v.version === neutroniumVersion);
   api.extendPackage({
     scripts: {
       serve: "vue-cli-service serve ./src/main.js --open --port 9000",
       live: "vue-cli-service serve ./src/entry.js --port 8080 --mode integrated",
-      build: `vue-cli-service build --entry ./src/entry.js${useModern? ' --modern' : ''}`,
+      build: `vue-cli-service build --entry ./src/entry.js${useModern ? ' --modern' : ''}`,
     },
     dependencies: {
       "neutronium-vue-command-mixin": "^1.4.1",

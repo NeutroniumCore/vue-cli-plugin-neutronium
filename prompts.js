@@ -1,17 +1,23 @@
 const locales = require('i18n-locales');
+const fullVersions = require('./utils/versions')
+const versions = fullVersions.map(v =>v.version);
+
+function toChoices(array, selected){
+  return array.map(name => ({ name, value: name, checked: name === selected }));
+}
 
 module.exports = [
+  {
+    type: 'list',
+    name: 'neutroniumVersion',
+    message: 'Choose Neutronium targeted version',
+    choices: toChoices(versions, versions[0]),
+  },
   {
     type: 'confirm',
     name: 'useRouter',
     message: 'Use router with vue-router integrated with Neutronium?',
-    default: false,
-  },
-  {
-    type: 'confirm',
-    name: 'useModern',
-    message: 'Use modern build (only compatible with Neutronium >= 1.4.0)?',
-    default: true,
+    default: false, 
   },
   {
     type: 'confirm',
@@ -72,7 +78,7 @@ module.exports = [
     name: 'locales',
     when: answer => answer.useInternationalization,
     message: 'Project locales?',
-    choices: locales.map(name => ({ name, value: name, checked: name === 'en-US' })),
+    choices: toChoices(locales, 'en-US'),
     group: "Internationalization"
   },
 ]
