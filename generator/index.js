@@ -6,14 +6,14 @@ function replaceInLicense(licenseTextTemplate, sourceText, newText) {
 }
 
 module.exports = (api, option) => {
-  const { useRouter, useInternationalization } = option;
+  const { useRouter, useInternationalization, useModern } = option;
   option.nameSpace = option.nameSpace || option.projectName;
   option.exeName = option.exeName || option.projectName;
   api.extendPackage({
     scripts: {
       serve: "vue-cli-service serve ./src/main.js --open --port 9000",
       live: "vue-cli-service serve ./src/entry.js --port 8080 --mode integrated",
-      build: "vue-cli-service build --entry ./src/entry.js",
+      build: `vue-cli-service build --entry ./src/entry.js${useModern? ' --modern' : ''}`,
     },
     dependencies: {
       "neutronium-vue-command-mixin": "^1.4.1",

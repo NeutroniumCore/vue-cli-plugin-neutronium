@@ -9,6 +9,12 @@ module.exports = [
   },
   {
     type: 'confirm',
+    name: 'useModern',
+    message: 'Use modern build (only compatible with Neutronium >= 1.4.0)?',
+    default: true,
+  },
+  {
+    type: 'confirm',
     name: 'useInternationalization',
     message: 'Use internationalization with vue-i18n integrated with Neutronium?',
     default: false,
