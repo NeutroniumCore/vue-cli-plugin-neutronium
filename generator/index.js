@@ -10,7 +10,7 @@ module.exports = (api, option) => {
   const { useRouter, useInternationalization, neutroniumVersion } = option;
   option.nameSpace = option.nameSpace || option.projectName;
   option.exeName = option.exeName || option.projectName;
-  const { useModern } = versions.find(v => v.version === neutroniumVersion);
+  const { browser, useModern } = versions.find(v => v.version === neutroniumVersion);
   api.extendPackage({
     scripts: {
       serve: "vue-cli-service serve ./src/main.js --open --port 9000",
@@ -24,6 +24,14 @@ module.exports = (api, option) => {
     },
     devDependencies: {
       "neutronium-vm-loader": "^1.3.0"
+    },
+    browserList:{
+      "production": [
+        `chrome >= ${browser}`
+      ],
+      "development": [
+        "last 2 chrome version"
+      ]
     }
   })
 
