@@ -25,14 +25,7 @@ module.exports = (api, option) => {
     devDependencies: {
       "neutronium-vm-loader": "^1.3.0"
     },
-    browserList:{
-      "production": [
-        `chrome >= ${browser}`
-      ],
-      "development": [
-        "last 2 chrome version"
-      ]
-    }
+    browserslist: `chrome >= ${browser}`
   })
 
   api.render('./template');
