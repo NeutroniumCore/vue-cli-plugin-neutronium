@@ -25,7 +25,9 @@ module.exports = (api, option) => {
     devDependencies: {
       "neutronium-vm-loader": "^1.3.0"
     },
-    browserslist: `chrome >= ${browser}`
+    browserslist: [
+      `chrome >= ${browser}`
+    ]
   })
 
   api.render('./template');
@@ -50,5 +52,19 @@ module.exports = (api, option) => {
 
   api.postProcessFiles(files => {
     replaceBy(files, 'src/assets/logo.png', 'src/assets/neutronium-vue-logo.png');
+  })
+
+  api.onCreateComplete(() => {
+    if (!api.hasPlugin('eslint')) {
+      return;
+    }
+    // Lint generated/modified files
+    try {
+      const lint = require('@vue/cli-plugin-eslint/lint');
+      const files = ['*.js', '.*.js', 'src'];
+      lint({ silent: true, _: files }, api);
+    } catch (e) {
+      api.exitLog('lint not performed', 'warn');
+    }
   })
 }
