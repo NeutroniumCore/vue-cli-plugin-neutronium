@@ -16,7 +16,7 @@
 - Neutronium version:
   - Option 1.3 and 1.4 (default)
 
-   - **Important:** for version superior to 1.4 local files should be referenced using the [pack uri syntax]().
+   - **Important:** for version superior to 1.4 local files should be referenced using the [pack uri syntax](https://github.com/NeutroniumCore/Neutronium/blob/master/Documentation/Content/Reference_Files.md).
 
 - Use vue router:
   - default: false
