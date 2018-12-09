@@ -22,7 +22,7 @@
   - default: false
   - configure [vue-router](https://router.vuejs.org/) integrated with ViewModel using [ViewModel.Tools ApplicationViewModel](https://github.com/NeutroniumCore/ViewModel.Tools)
 
--Use internalization:
+- Use internalization:
   - default: false
   - convert .Net .resx file into json files and configure [vue-i18n](https://kazupon.github.io/vue-i18n/) to use them
   - Addition information needed for this option:
