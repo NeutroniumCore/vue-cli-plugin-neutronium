@@ -1,23 +1,23 @@
 const locales = require('i18n-locales');
-const fullVersions = require('./utils/versions')
-const versions = fullVersions.map(v =>v.version);
+const versions = require('./utils/versions')
 
-function toChoices(array, selected){
+function toChoices(array, selected) {
   return array.map(name => ({ name, value: name, checked: name === selected }));
 }
 
 module.exports = [
   {
     type: 'list',
+    default: versions[0].version,
     name: 'neutroniumVersion',
     message: 'Choose Neutronium targeted version',
-    choices: toChoices(versions, versions[0]),
+    choices: versions.map(v => ({ name: v.version, value: v.version}))
   },
   {
     type: 'confirm',
     name: 'useRouter',
     message: 'Use router with vue-router integrated with Neutronium?',
-    default: false, 
+    default: false,
   },
   {
     type: 'confirm',
@@ -36,31 +36,31 @@ module.exports = [
   },
   {
     type: 'input',
-    name: 'projectName',
+    name: 'nameSpace',
     when: answer => answer.useInternationalization,
-    message: 'C# : project name',
+    message: 'Resource namespace:',
     group: "Internationalization"
   },
   {
     type: 'confirm',
-    name: 'namespaceDifferent',
-    message: 'Resource namespace different from project name?',
+    name: 'pathDifferent',
+    message: 'Project path different from resource namespace?',
     when: answer => answer.useInternationalization,
     default: false,
     group: "Internationalization"
   },
   {
     type: 'input',
-    name: 'nameSpace',
-    default: answer => answer.projectName,
-    when: answer => answer.useInternationalization && answer.namespaceDifferent,
-    message: 'Resource namespace:',
+    name: 'projectPath',
+    when: answer => answer.useInternationalization && answer.pathDifferent,
+    default: answer => answer.nameSpace,
+    message: 'C# : project path',
     group: "Internationalization"
   },
   {
     type: 'confirm',
     name: 'libraryNameDifferent',
-    message: 'Library name different from project name?',
+    message: 'Library name different from project namespace?',
     default: false,
     when: answer => answer.useInternationalization,
     group: "Internationalization"
@@ -68,8 +68,8 @@ module.exports = [
   {
     type: 'input',
     name: 'exeName',
-    default: answer => answer.projectName,
-    when: answer => answer.useInternationalization & answer.libraryNameDifferent,
+    default: answer => answer.nameSpace,
+    when: answer => answer.useInternationalization && answer.libraryNameDifferent,
     message: 'Library name (filename without .exe)?',
     group: "Internationalization"
   },

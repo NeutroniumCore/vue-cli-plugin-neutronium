@@ -1,6 +1,6 @@
 ﻿<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\<%= options.projectName %>\bin\Debug\<%= options.exeName %>.exe" #>
+<#@ assembly name="$(SolutionDir)\<%= options.projectPath %>\bin\Debug\<%= options.exeName %>.exe" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Globalization" #>
 <#@ import namespace="System.Resources" #>

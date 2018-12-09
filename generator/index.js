@@ -8,8 +8,8 @@ function replaceInLicense(licenseTextTemplate, sourceText, newText) {
 
 module.exports = (api, option) => {
   const { useRouter, useInternationalization, neutroniumVersion } = option;
-  option.nameSpace = option.nameSpace || option.projectName;
-  option.exeName = option.exeName || option.projectName;
+  option.projectPath = option.projectPath || option.nameSpace;
+  option.exeName = option.exeName || option.nameSpace;
   const { browser, useModern } = versions.find(v => v.version === neutroniumVersion);
   api.extendPackage({
     scripts: {
