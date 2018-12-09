@@ -54,7 +54,7 @@ module.exports = [
     name: 'projectPath',
     when: answer => answer.useInternationalization && answer.pathDifferent,
     default: answer => answer.nameSpace,
-    message: 'C# : project path',
+    message: 'C# project path',
     group: "Internationalization"
   },
   {
