@@ -26,13 +26,15 @@
 	first =false;
 	WriteLine($@"""{langage}"":{{");
 	PushIndent("    ");
+	var last = Resources.Last();
 	foreach(var resource in Resources){
-		WriteLine($@"""{resource}"":{{");
+		WriteLine($@"""{resource.ToLower()}"":{{");
 		PushIndent("    ");
 		var dic = GetDictionary(resource, langage);
 		DisplayDictionary(dic);
 		PopIndent();
-		WriteLine("}");
+		var closing =  (last == resource)? "}" : "},";
+		WriteLine(closing);
 	}
 	PopIndent();
  } 
