@@ -20,8 +20,10 @@ const { router } = options;
 /*eslint no-unused-vars: ["error", { "args": "none" }]*/
 router.beforeEach((to, _, next) => {
   const name = to.name;
+  console.log(`navigation to ${name}`)
   if (name === null) {
     next();
+    return;
   }
   import(`../data/${name}/vm.cjson`)
     .then(module => {
