@@ -1,4 +1,7 @@
 module.exports = {
   baseUrl: "./",
-  filenameHashing: false
+  filenameHashing: false,
+  chainWebpack: config => {
+    config.devtool("eval-source-map");
+  }
 };
