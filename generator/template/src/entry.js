@@ -4,7 +4,7 @@ import { install, vueInstanceOption } from './install'
 import vueHelper from 'vueHelper'
 
 function buildVueOption(vm) {
-  var option = vueInstanceOption(vm);
+  var option = vueInstanceOption(vm, Vue);
   option.render = function (h) {
     const prop = {
       props: {

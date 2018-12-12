@@ -15,7 +15,7 @@ install(Vue)
   return vm;
 }
 
-var options = vueInstanceOption();
+const options = vueInstanceOption(vm, Vue);
 const { router } = options;
 /*eslint no-unused-vars: ["error", { "args": "none" }]*/
 router.beforeEach((to, _, next) => {
@@ -38,8 +38,9 @@ router.beforeEach((to, _, next) => {
       next();
     });
 });<% } %>
+<% if (!options.useRouter) { %> const options = vueInstanceOption(vm, Vue);<% } %>
 
-const vueRootInstanceOption = Object.assign({}, vueInstanceOption() || {}, {
+const vueRootInstanceOption = Object.assign({}, options || {}, {
   render: h => h(App, {
     props: {
       viewModel: vm.ViewModel,

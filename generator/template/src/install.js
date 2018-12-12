@@ -11,7 +11,7 @@ function install(Vue) {
 }
 
 /*eslint no-unused-vars: ["error", { "args": "none" }]*/
-function vueInstanceOption(vm) {
+function vueInstanceOption(vm, Vue) {
   <% if (options.useInternationalization) { %>const i18n = new VueI18n({
     locale: "en-US", // set locale
     messages // set locale messages
