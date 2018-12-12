@@ -1,4 +1,5 @@
 const { renameFiles, replaceBy, updateFile } = require('./fileHelper')
+const versions = require('../utils/versions');
 
 function replaceInLicense(licenseTextTemplate, sourceText, newText) {
   return licenseTextTemplate.replace(new RegExp(`<${sourceText}>`), newText)
@@ -6,14 +7,15 @@ function replaceInLicense(licenseTextTemplate, sourceText, newText) {
 }
 
 module.exports = (api, option) => {
-  const { useRouter, useInternationalization } = option;
-  option.nameSpace = option.nameSpace || option.projectName;
-  option.exeName = option.exeName || option.projectName;
+  const { useRouter, useInternationalization, neutroniumVersion } = option;
+  option.projectPath = option.projectPath || option.nameSpace;
+  option.exeName = option.exeName || option.nameSpace;
+  const { browser, useModern } = versions.find(v => v.version === neutroniumVersion);
   api.extendPackage({
     scripts: {
       serve: "vue-cli-service serve ./src/main.js --open --port 9000",
       live: "vue-cli-service serve ./src/entry.js --port 8080 --mode integrated",
-      build: "vue-cli-service build --entry ./src/entry.js",
+      build: `vue-cli-service build --entry ./src/entry.js${useModern ? ' --modern' : ''}`,
     },
     dependencies: {
       "neutronium-vue-command-mixin": "^1.4.1",
@@ -22,7 +24,10 @@ module.exports = (api, option) => {
     },
     devDependencies: {
       "neutronium-vm-loader": "^1.3.0"
-    }
+    },
+    browserslist: [
+      `chrome >= ${browser}`
+    ]
   })
 
   api.render('./template');
@@ -47,5 +52,19 @@ module.exports = (api, option) => {
 
   api.postProcessFiles(files => {
     replaceBy(files, 'src/assets/logo.png', 'src/assets/neutronium-vue-logo.png');
+  })
+
+  api.onCreateComplete(() => {
+    if (!api.hasPlugin('eslint')) {
+      return;
+    }
+    // Lint generated/modified files
+    try {
+      const lint = require('@vue/cli-plugin-eslint/lint');
+      const files = ['*.js', '.*.js', 'src'];
+      lint({ silent: true, _: files }, api);
+    } catch (e) {
+      api.exitLog('lint not performed', 'warn');
+    }
   })
 }

@@ -1,6 +1,6 @@
 ﻿<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\<%= options.projectName %>\bin\Debug\<%= options.exeName %>.exe" #>
+<#@ assembly name="$(SolutionDir)\<%= options.projectPath %>\bin\Debug\<%= options.exeName %>.exe" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Globalization" #>
 <#@ import namespace="System.Resources" #>
@@ -11,10 +11,10 @@
 <#@ import namespace="<%= options.nameSpace %>" #>
 <#@ output extension=".json" #>
 <# 
-	Langages = new [] { 
-<% for(var i=0; i<options.locales.length; i++) {%>    "<%= options.locales[i] %>"<% if (i< options.locales.length-1) { %>,<% } %><% } %>
-	};
-	Resources = new []{"<%= options.resourceFileName %>"};
+  Langages = new [] { 
+      <% for(var i=0; i<options.locales.length; i++) {%>"<%= options.locales[i] %>"<% if (i< options.locales.length-1) { %>, <% } %><% } %>
+  };
+  Resources = new []{"<%= options.resourceFileName %>"};
 #>
 {
  <# var first = true;
@@ -26,13 +26,15 @@
 	first =false;
 	WriteLine($@"""{langage}"":{{");
 	PushIndent("    ");
+	var last = Resources.Last();
 	foreach(var resource in Resources){
-		WriteLine($@"""{resource}"":{{");
+		WriteLine($@"""{resource.ToLower()}"":{{");
 		PushIndent("    ");
 		var dic = GetDictionary(resource, langage);
 		DisplayDictionary(dic);
 		PopIndent();
-		WriteLine("}");
+		var closing =  (last == resource)? "}" : "},";
+		WriteLine(closing);
 	}
 	PopIndent();
  } 
