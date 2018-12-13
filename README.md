@@ -18,8 +18,12 @@
 
    - **Important:** for version superior to 1.4 local files should be referenced using the [pack uri syntax](https://github.com/NeutroniumCore/Neutronium/blob/master/Documentation/Content/Reference_Files.md).
 
+- Use root vm plugin:
+  - default: `true`
+  - configure [neutronium-vue-root-vm-access](https://github.com/NeutroniumCore/neutronium-vue-root-vm-access) making root ViewModel accessible as `this.$rootVm ` in vue components.
+
 - Use vue router:
-  - default: false
+  - default: `false`
   - configure [vue-router](https://router.vuejs.org/) integrated with ViewModel using [ViewModel.Tools ApplicationViewModel](https://github.com/NeutroniumCore/ViewModel.Tools)
 
 - Use internalization:
