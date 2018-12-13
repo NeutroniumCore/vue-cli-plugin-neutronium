@@ -15,6 +15,12 @@ module.exports = [
   },
   {
     type: 'confirm',
+    name: 'useRootVm',
+    message: 'Use root vm plugin to access viewModel as $rootVm attribute from vue components?',
+    default: true,
+  },
+  {
+    type: 'confirm',
     name: 'useRouter',
     message: 'Use router with vue-router integrated with Neutronium?',
     default: false,
