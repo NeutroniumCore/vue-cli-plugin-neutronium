@@ -9,7 +9,7 @@
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="<%= options.nameSpace %>" #>
-<#@ output extension=".json" #>
+<#@ output extension=".json" encoding="utf-8"#>
 <# 
   Langages = new [] { 
       <% for(var i=0; i<options.locales.length; i++) {%>"<%= options.locales[i] %>"<% if (i< options.locales.length-1) { %>, <% } %><% } %>
