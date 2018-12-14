@@ -54,6 +54,12 @@ router.beforeEach((to, from, next) => {
     return;
   }
 
+  if (to.name == null) {
+    console.error(`Can not navigate to route:${JSON.stringify(to)}. Only named route are supported`);
+    next(false);
+    return;
+  }
+
   const promise = toPromise(navigator, to.name);
   promise.then(
     ok => {
