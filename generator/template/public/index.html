@@ -2,11 +2,16 @@
 extend: '@vue/cli-service/generator/template/public/index.html'
 replace:
   - !!js/regexp /<html lang="en">/
+  - !!js/regexp /<body>/
   - !!js/regexp /<div id="app"><\/div>/
 ---
 
 <%# REPLACE %>
 <html lang="en" style="height: 100%;">
+<%# END_REPLACE %>
+
+<%# REPLACE %>
+<body style="height: 100%;">
 <%# END_REPLACE %>
 
 <%# REPLACE %>
