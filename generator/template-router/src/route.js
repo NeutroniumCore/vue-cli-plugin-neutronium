@@ -2,17 +2,30 @@ import Router from "vue-router";
 import routeDefinitions from "./routeDefinitions";
 import { toPromise } from "neutronium-vue-resultcommand-topromise";
 
-function route({ name, children, component, path }) {
+function route({ name, children, component, redirect }) {
   return {
     exact: true,
     path: path || `/${name}`,
-    name: name,
+    name,
+    redirect,
     children,
     component
   };
 }
 
+function preprocessPath(path) {
+  return path.substring(1);
+}
+
 const routes = routeDefinitions.map(route);
+if (!routes.some(r => r.path === "/")) {
+  routes.push({
+    exact: true,
+    path: "/",
+    name: "",
+    redirect: { name: routes[0].name }
+  })
+}
 
 const router = new Router({
   mode: "hash",
@@ -41,7 +54,7 @@ function getRouterViewModel(router) {
 }
 
 /*eslint no-unused-vars: ["error", { "args": "none" }]*/
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const routerViewModel = getRouterViewModel(router);
   if (!routerViewModel) {
     next();
@@ -54,28 +67,25 @@ router.beforeEach((to, from, next) => {
     return;
   }
 
-  if (to.name == null) {
-    console.error(`Can not navigate to route:${JSON.stringify(to)}. Only named route are supported`);
-    next(false);
-    return;
-  }
-
-  const promise = toPromise(navigator, to.name);
-  promise.then(
-    ok => {
-      if (!ok.Continue) {
-        next(false);
-      } else if (ok.Redirect) {
-        next({ name: ok.Redirect });
-      } else {
-        router.app.ViewModel.CurrentViewModel = ok.To;
-        next();
-      }
-    },
-    error => {
-      next(error);
+  try {
+    const destination = preprocessPath(to.path);
+    const navigationResult = await toPromise(navigator, destination);
+    if (!navigationResult.Continue) {
+      next(false);
+      return;
     }
-  );
+
+    if (navigationResult.Redirect) {
+      next({ path: navigationResult.Redirect });
+      return;
+    }
+
+    router.app.ViewModel.CurrentViewModel = navigationResult.To;
+    next();
+  }
+  catch (error) {
+    next(error);
+  }
 });
 
 /*eslint no-unused-vars: ["error", { "args": "none" }]*/
@@ -89,7 +99,9 @@ router.afterEach((to, from, next) => {
   if (!navigator) {
     return;
   }
-  navigator.Execute(to.name);
+
+  const destination = preprocessPath(to.path);
+  navigator.Execute(destination);
 });
 
 export { router, menu };
