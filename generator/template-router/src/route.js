@@ -22,7 +22,6 @@ if (!routes.some(r => r.path === "/")) {
   routes.push({
     exact: true,
     path: "/",
-    name: "",
     redirect: { name: routes[0].name }
   })
 }
