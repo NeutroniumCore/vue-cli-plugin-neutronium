@@ -10,8 +10,6 @@ module.exports = (api, option) => {
   const usesTypescript = api.hasPlugin('typescript');
   const extension = usesTypescript ? 'ts' : 'js'
   const { useRouter, useInternationalization, neutroniumVersion } = option;
-  option.projectPath = option.projectPath || option.nameSpace;
-  option.exeName = option.exeName || option.nameSpace;
   const { browser, useModern } = versions.find(v => v.version === neutroniumVersion);
   api.extendPackage({
     scripts: {

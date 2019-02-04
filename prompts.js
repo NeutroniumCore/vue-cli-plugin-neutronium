@@ -48,38 +48,6 @@ module.exports = [
     group: "Internationalization"
   },
   {
-    type: 'confirm',
-    name: 'pathDifferent',
-    message: 'Project path different from resource namespace?',
-    when: answer => answer.useInternationalization,
-    default: false,
-    group: "Internationalization"
-  },
-  {
-    type: 'input',
-    name: 'projectPath',
-    when: answer => answer.useInternationalization && answer.pathDifferent,
-    default: answer => answer.nameSpace,
-    message: 'C# project path',
-    group: "Internationalization"
-  },
-  {
-    type: 'confirm',
-    name: 'libraryNameDifferent',
-    message: 'Library name different from project namespace?',
-    default: false,
-    when: answer => answer.useInternationalization,
-    group: "Internationalization"
-  },
-  {
-    type: 'input',
-    name: 'exeName',
-    default: answer => answer.nameSpace,
-    when: answer => answer.useInternationalization && answer.libraryNameDifferent,
-    message: 'Library name (filename without .exe)?',
-    group: "Internationalization"
-  },
-  {
     type: 'checkbox',
     name: 'locales',
     when: answer => answer.useInternationalization,
