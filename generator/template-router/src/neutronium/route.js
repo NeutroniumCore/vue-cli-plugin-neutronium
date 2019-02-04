@@ -1,5 +1,5 @@
 import Router from "vue-router";
-import routeDefinitions from "./routeDefinitions";
+import routeDefinitions from "@/routeDefinitions";
 import { toPromise } from "neutronium-vue-resultcommand-topromise";
 
 function route({ name, children, component, redirect }) {
@@ -13,10 +13,6 @@ function route({ name, children, component, redirect }) {
   };
 }
 
-function preprocessPath(path) {
-  return path.substring(1);
-}
-
 const routes = routeDefinitions.map(route);
 if (!routes.some(r => r.path === "/")) {
   routes.push({
@@ -24,6 +20,10 @@ if (!routes.some(r => r.path === "/")) {
     path: "/",
     redirect: { name: routes[0].name }
   })
+}
+
+function preprocessPath(path) {
+  return path.substring(1);
 }
 
 const router = new Router({

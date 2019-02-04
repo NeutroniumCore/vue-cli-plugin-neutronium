@@ -15,9 +15,9 @@ module.exports = (api, option) => {
   const { browser, useModern } = versions.find(v => v.version === neutroniumVersion);
   api.extendPackage({
     scripts: {
-      serve: `vue-cli-service serve ./src/main.${extension} --open --port 9000`,
-      live: `vue-cli-service serve ./src/entry.${extension} --port 8080 --mode integrated`,
-      build: `vue-cli-service build --entry ./src/entry.${extension}${useModern ? ' --modern' : ''}`,
+      serve: `vue-cli-service serve ./src/neutronium/main.${extension} --open --port 9000`,
+      live: `vue-cli-service serve ./src/neutronium/entry.${extension} --port 8080 --mode integrated`,
+      build: `vue-cli-service build --entry ./src/neutronium/entry.${extension}${useModern ? ' --modern' : ''}`,
     },
     dependencies: {
       "neutronium-vue-command-mixin": "^1.4.1",

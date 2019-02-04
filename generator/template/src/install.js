@@ -1,5 +1,5 @@
 <% if (options.useRouter) { %>import Vue_Router from "vue-router";
-import { router } from "./route";<% } %>
+import { router } from "@/neutronium/route";<% } %>
 <% if (options.useRootVm) { %>import VmAccess from "neutronium-vue-root-vm-access";<% } %>
 <% if (options.useInternationalization) { %>import VueI18n from "vue-i18n";
 import messages from "./message";<% } %>

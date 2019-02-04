@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
-import rawVm from '../data/vm'
-import { install, vueInstanceOption } from './install'
+import App from '@/App.vue'
+import rawVm from '../../data/vm'
+import { install, vueInstanceOption } from '@/install'
 import { createVM } from 'neutronium-vm-loader'
-<% if (options.useRouter) {%>import viewModels from "../data/viewModels"<% } %>
+<% if (options.useRouter) {%>import viewModels from "../../data/viewModels"<% } %>
 
 <% if (!options.useRouter) { %>const vm = createVM(rawVm);<% } %>
 <% if (options.useRouter) {%>const vm = updateVM(rawVm);<% } %>
@@ -21,11 +21,11 @@ function vmName(name){
 }
 
 function getViewModelFileName(name){
-  return `./../data/${name}/${vmName(name)}.cjson`;
+  return `./../../data/${name}/${vmName(name)}.cjson`;
 }
 
 function getViewModelFile(name){
-  return import(`./../data/${name}/${vmName(name)}.cjson`);
+  return import(`./../../data/${name}/${vmName(name)}.cjson`);
 }
 
 const options = vueInstanceOption(vm, Vue);
