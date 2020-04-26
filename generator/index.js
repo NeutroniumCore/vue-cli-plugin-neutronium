@@ -24,7 +24,7 @@ module.exports = (api, option) => {
       "neutronium-vue-root-vm-access": "^1.0.0"
     },
     devDependencies: {
-      "neutronium-vm-loader": "^1.3.0"
+      "neutronium-vm-loader": "^1.4.0"
     },
     browserslist: [
       `chrome >= ${browser}`
